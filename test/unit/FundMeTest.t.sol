@@ -3,8 +3,8 @@
 pragma solidity ^0.8.18;
 
 import {Test} from "forge-std/Test.sol";
-import {FundMe} from "../src/FundMe.sol";
-import {DeployFundMe} from "../script/DeployFoundMe.s.sol";
+import {FundMe} from "../../src/FundMe.sol";
+import {DeployFundMe} from "../../script/DeployFoundMe.s.sol";
 
 contract FundMeTest is Test {
     FundMe fundMe;
@@ -54,8 +54,8 @@ contract FundMeTest is Test {
     }
 
     function testOnlyOwnerCanWithraw() public funded {
-        vm.expectRevert();
         vm.prank(USER);
+        vm.expectRevert();
         fundMe.withdraw();
     }
 
